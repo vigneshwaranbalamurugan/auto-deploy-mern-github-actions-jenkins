@@ -1,0 +1,20 @@
+# Frontend Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: vigneshwaranbalamurugan/frontend:latest
+        ports:
+        - containerPort: 3000 

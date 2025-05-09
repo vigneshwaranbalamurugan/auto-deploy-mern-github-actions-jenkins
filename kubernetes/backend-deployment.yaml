@@ -1,0 +1,25 @@
+# Backend Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: vigneshwaranbalamurugan/backend:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGODB_URI
+          value: "mongodb://mongodb-service:27017/mernapp"
+        - name: PORT
+          value: "5000"
